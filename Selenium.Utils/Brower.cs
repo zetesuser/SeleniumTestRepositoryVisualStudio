@@ -1,6 +1,6 @@
 ﻿namespace Selenium.Utils
 {
-    public enum Brower
+    public enum Browser
     {
         Firefox,
         Chrome,

@@ -15,7 +15,7 @@ namespace ZetesVulcan.BackOffice.Tests
         [SetUp]
         public void Initialize_1()
         {
-            _login = new Login(Brower.Firefox);
+            _login = new Login(Browser.Firefox);
             _login.LoadPage();
         }
 

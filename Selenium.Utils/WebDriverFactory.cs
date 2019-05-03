@@ -14,18 +14,18 @@ namespace Selenium.Utils
     {
         
         public static IWebDriver ReturnWebDriver(
-            Brower brower, string PathDriver = null)
+            Browser browser, string PathDriver = null)
         {
             IWebDriver webDriver = null;
-            switch (brower)
+            switch (browser)
             {
-                case Brower.Firefox:
+                case Browser.Firefox:
                     webDriver = new FirefoxDriver(PathDriver);
                     break;
-                case Brower.Chrome:
+                case Browser.Chrome:
                     webDriver = new ChromeDriver(PathDriver);
                     break;
-                case Brower.InternetExplorer:
+                case Browser.InternetExplorer:
                     var options = new InternetExplorerOptions();
                     {
                         options.EnableNativeEvents = false;
