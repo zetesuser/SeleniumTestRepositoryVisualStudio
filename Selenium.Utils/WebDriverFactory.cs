@@ -13,8 +13,7 @@ namespace Selenium.Utils
     public static class WebDriverFactory
     {
         
-        public static IWebDriver ReturnWebDriver(
-            Browser browser, string PathDriver = null)
+        public static IWebDriver ReturnWebDriver(Browser browser, string PathDriver = null)
         {
             IWebDriver webDriver = null;
             switch (browser)

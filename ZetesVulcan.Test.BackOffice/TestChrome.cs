@@ -9,42 +9,50 @@ using System.Threading.Tasks;
 namespace ZetesVulcan.Test.BackOffice
 {
     //[TestFixture]
+    [TestClass]
     public class TestChrome
     {
         private Login _login;
 
-        //[SetUp]
-        public void Initialized()
-        {
-            _login = new Login(Browser.Chrome);
-            _login.LoadPage();
-        }
-
         //[TestCase("Authentication")]
-        public void CheckTitle(string value1)
-        {
-            value1 = "Authentication";
-            string returnValue = _login.ReturnTitle();
-            Assert.AreEqual(value1, returnValue);
-        }
+        private readonly string Expected_PageTitle = "Authentication";
 
         //[TestCase("admin", "", "Palavra-chave é de preenchimento obrigatório")]
-        public void Validated(string value1, string value2, string value3)
+        private readonly string User = "admin";
+        private readonly string Password = "";
+        private readonly string Expected_PasswordRequired = "Palavra-chave é de preenchimento obrigatório";
+
+        //[SetUp]
+        [TestMethod]
+        public void Initialized()
         {
-            value1 = "admin";
-            value2 = "";
-            value3 = "alavra-chave é de preenchimento obrigatório";
-            _login.SetField_Username(value1);
-            _login.SetField_Password(value2);
-            _login.SetButton_btnprimary();
-            string returnValue = _login.Getlabel_helpblockerror();
-            Assert.AreEqual(value3, returnValue);
+            try
+            {
+                _login = new Login(Browser.Chrome);
+                _login.LoadPage();
+
+                string Return_PageTitle = _login.ReturnTitle();
+                Assert.AreEqual(Expected_PageTitle, Return_PageTitle);
+
+                _login.SetField_Username(User);
+                _login.SetField_Password(Password);
+                _login.SetButton_btnprimary();
+                string return_PasswordRequired = _login.Getlabel_helpblockerror();
+                Assert.AreEqual(Expected_PasswordRequired, return_PasswordRequired);
+
+                _login.SetClose();
+            }
+            catch (Exception ex)
+            {
+                string error = ex.ToString();
+            }
+            finally
+            {
+                _login.SetClose();
+            }
         }
 
         //[TearDown]
-        public void Finalized()
-        {
-            _login.SetClose();
-        }
+
     }
 }

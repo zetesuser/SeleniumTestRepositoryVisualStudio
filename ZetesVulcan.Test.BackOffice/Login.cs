@@ -7,18 +7,16 @@ using OpenQA.Selenium.Support.UI;
 
 namespace ZetesVulcan.Test.BackOffice
 {
-    [TestClass]
     public class Login
     {
         private Browser _browser;
         private IWebDriver _driver;
 
-        
         public Login(Browser browser)
         {
             _browser = browser;
+             string pathDriver = null;
 
-            string pathDriver = null;
             if (browser == Browser.Chrome)
             {
                 pathDriver = ConfigurationManager.AppSettings["PathDriverChrome"];
@@ -36,7 +34,6 @@ namespace ZetesVulcan.Test.BackOffice
             _driver = WebDriverFactory.ReturnWebDriver(browser, pathDriver);
         }
 
-        [TestMethod]
         public void LoadPage()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);

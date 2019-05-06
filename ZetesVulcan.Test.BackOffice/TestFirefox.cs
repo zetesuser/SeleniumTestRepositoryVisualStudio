@@ -9,42 +9,39 @@ using System.Threading.Tasks;
 namespace ZetesVulcan.Test.BackOffice
 {
     //[TestFixture]
+    [TestClass]
     public class TestFirefox
     {
         private Login _login;
 
+        //[TestCase("Authentication")]
+        private readonly string Expected_PageTitle = "Authentication";
+
+        //[TestCase("admin", "", "Palavra-chave é de preenchimento obrigatório")]
+        private readonly string User = "admin";
+        private readonly string Password = "";
+        private readonly string Expected_PasswordRequired = "Palavra-chave é de preenchimento obrigatório";
+
         //[SetUp]
+        [TestMethod]
         public void Initialized()
+
         {
             _login = new Login(Browser.Firefox);
             _login.LoadPage();
-        }
 
-        //[TestCase("Authentication")]
-        public void checktitle(string value1)
-        {
-            value1 = "Authentication";
-            string returnValue = _login.ReturnTitle();
-            Assert.AreEqual(value1, returnValue);
-        }
+            string Return_PageTitle = _login.ReturnTitle();
+            Assert.AreEqual(Expected_PageTitle, Return_PageTitle);
 
-        //[TestCase("admin", "", "Palavra-chave é de preenchimento obrigatório")]
-        public void Validated(string value1, string value2, string value3)
-        {
-            value1 = "admin";
-            value2 = "";
-            value3 = "alavra-chave é de preenchimento obrigatório";
-            _login.SetField_Username(value1);
-            _login.SetField_Password(value2);
+            _login.SetField_Username(User);
+            _login.SetField_Password(Password);
             _login.SetButton_btnprimary();
-            string returnValue = _login.Getlabel_helpblockerror();
-            Assert.AreEqual(value3, returnValue);
+            string return_PasswordRequired = _login.Getlabel_helpblockerror();
+            Assert.AreEqual(Expected_PasswordRequired, return_PasswordRequired);
+
+            _login.SetClose();
         }
 
         //[TearDown]
-        public void Finalized()
-        {
-            _login.SetClose();
-        }
     }
 }
