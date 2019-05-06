@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageAuthentication.cs" />
     <Compile Include="TestIE.cs" />
     <Compile Include="TestFirefox.cs" />
     <Compile Include="TestChrome.cs" />
