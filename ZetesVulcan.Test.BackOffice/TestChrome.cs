@@ -20,9 +20,20 @@ namespace ZetesVulcan.Test.BackOffice
             _login.LoadPage();
         }
 
+        //[TestCase("Authentication")]
+        public void CheckTitle(string value1)
+        {
+            value1 = "Authentication";
+            string returnValue = _login.ReturnTitle();
+            Assert.AreEqual(value1, returnValue);
+        }
+
         //[TestCase("admin", "", "Palavra-chave é de preenchimento obrigatório")]
         public void Validated(string value1, string value2, string value3)
         {
+            value1 = "admin";
+            value2 = "";
+            value3 = "alavra-chave é de preenchimento obrigatório";
             _login.SetField_Username(value1);
             _login.SetField_Password(value2);
             _login.SetButton_btnprimary();

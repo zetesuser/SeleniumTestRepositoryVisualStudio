@@ -44,6 +44,11 @@ namespace ZetesVulcan.Test.BackOffice
             _driver.Manage().Window.Maximize();
         }
 
+        public string ReturnTitle()
+        {
+            return _driver.Title;
+        }
+
         public void SetField_Username(string value)
         {
             IWebElement setfieldUsername = _driver.FindElement(By.Id("Username"));
