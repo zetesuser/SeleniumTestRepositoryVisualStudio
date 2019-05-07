@@ -46,10 +46,10 @@ namespace ZetesVulcan.Test.BackOffice
             {
                 string error = ex.ToString();
             }
-            finally
-            {
-                _login.SetClose();
-            }
+            //finally
+            //{
+            //    _login.SetClose();
+            //}
         }
 
         //[TearDown]

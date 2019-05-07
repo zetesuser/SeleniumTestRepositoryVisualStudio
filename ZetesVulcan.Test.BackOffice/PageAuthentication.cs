@@ -14,6 +14,11 @@ namespace ZetesVulcan.Test.BackOffice
         By password = By.Id("Password");
         By buttonbtnprimary = By.ClassName("btn-primary");
 
+        public AuthenticationPage(IWebDriver driver)
+        {
+            _driver = driver;
+        }
+
         public void TypeUsername()
         {
             _driver.FindElement(username).SendKeys("");

@@ -48,20 +48,27 @@ namespace ZetesVulcan.Test.BackOffice
 
         public void SetField_Username(string value)
         {
-            IWebElement setfieldUsername = _driver.FindElement(By.Id("Username"));
-            setfieldUsername.SendKeys(value.ToString());
+            //IWebElement setfieldUsername = _driver.FindElement(By.Id("Username"));
+            //setfieldUsername.SendKeys(value.ToString());
+            AuthenticationPage authenticationPage = new AuthenticationPage(_driver);
+            authenticationPage.TypeUsername();
         }
 
         public void SetField_Password(string value)
         {
-            IWebElement setfieldPassword = _driver.FindElement(By.Id("Password"));
-            setfieldPassword.SendKeys(value.ToString());
+            //IWebElement setfieldPassword = _driver.FindElement(By.Id("Password"));
+            //setfieldPassword.SendKeys(value.ToString());
+            AuthenticationPage authenticationPage = new AuthenticationPage(_driver);
+            authenticationPage.TypePassword();
         }
 
         public void SetButton_btnprimary()
         {
-            IWebElement setbuttonbtnprimary = _driver.FindElement(By.ClassName("btn-primary"));
-            setbuttonbtnprimary.Submit();
+            //IWebElement setbuttonbtnprimary = _driver.FindElement(By.ClassName("btn-primary"));
+            //setbuttonbtnprimary.Submit();
+
+            AuthenticationPage authenticationPage = new AuthenticationPage(_driver);
+            authenticationPage.SetButtonPrimary();
 
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
             wait.Until((d) => d.FindElement(By.Id("Password-error")) != null);
@@ -75,6 +82,7 @@ namespace ZetesVulcan.Test.BackOffice
 
         public void SetClose()
         {
+            //_driver.Close();
             _driver.Quit();
             _driver = null;
         }
