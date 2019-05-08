@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Selenium.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;

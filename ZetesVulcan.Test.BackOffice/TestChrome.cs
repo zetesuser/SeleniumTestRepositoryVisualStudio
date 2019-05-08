@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ZetesVulcan.Test.BackOffice
 {
-    //[TestClass] //using Microsoft.VisualStudio.TestTools.UnitTesting;
-    [TestFixture] //using NUnit.Framework;
+   // [TestClass] //using Microsoft.VisualStudio.TestTools.UnitTesting;
+    //[TestFixture] //using NUnit.Framework;
     public class TestChrome
     {
         private Authencation _login;
@@ -24,7 +24,7 @@ namespace ZetesVulcan.Test.BackOffice
         private readonly string Expected_PasswordRequired = "Palavra-chave é de preenchimento obrigatório";
 
         //[TestMethod] //using Microsoft.VisualStudio.TestTools.UnitTesting;
-        [Test] //using NUnit.Framework;
+        //[Test] //using NUnit.Framework;
         public void LoginWithouPassword()
         {
             try
@@ -46,7 +46,7 @@ namespace ZetesVulcan.Test.BackOffice
             catch (Exception ex)
             {
                 string error = ex.ToString();
-            }
+            }            
         }
         //[TearDown]
     }

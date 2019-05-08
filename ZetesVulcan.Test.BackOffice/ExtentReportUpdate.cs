@@ -42,35 +42,37 @@ namespace ZetesVulcan.Test.BackOffice
         }
 
         [TestMethod]
-        public void PassedTestMethod()
+        public void Chrome()
         {
-            var test = extent.CreateTest("<div style='color:green; font -weight :bold'>PassedTestMethod</div>", "<h3>This test method gets passed</h3>");
+            TestChrome testchrome = new TestChrome();
+            testchrome.LoginWithouPassword();
+
+            var test = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser Chrome</div>", "<h3>This test method gets passed</h3>");
             test.Log(Status.Info, "First step of PassedTestMethod");
             test.Pass("<div style='color:green; font -weight :bold'>PassedTestMethod gets completed.</div>");
         }
 
         [TestMethod]
-        public void FailledTestMethod()
+        public void Firefox()
         {
-            var test = extent.CreateTest("<div style='color:red; font -weight :bold'>FailledTestMethod</div>", "<h3>This test method gets failled</h3>");
+
+            TestFirefox testfirefox = new TestFirefox();
+            testfirefox.LoginWithouPassword();
+
+            var test = extent.CreateTest("<div style='color:red; font -weight :bold'>Browser Firefox</div>", "<h3>This test method gets failled</h3>");
             test.Log(Status.Info, "First step of FailledTestMethod");
             test.Fail("<div style='color:red; font -weight :bold'>FailledTestMethod gets completed.</div>");
         }
 
         [TestMethod]
-        public void SkippedTestMethod()
+        public void InternetExplorer()
         {
-            var test = extent.CreateTest("SkippedTestMethod", "This test method gets skipped");
+            TestIE testie = new TestIE();
+            testie.LoginWithouPassword();
+
+            var test = extent.CreateTest("Browser Internet Explorer", "This test method gets skipped");
             test.Log(Status.Info, "First step of SkippedTestMethod");
             test.Skip("SkippedTestMethod gets completed.");
-        }
-
-        [TestMethod]
-        public void WarningTestMethod()
-        {
-            var test = extent.CreateTest("WarningTestMethod", "This test method gets passed");
-            test.Log(Status.Info, "First step of WarningTestMethod");
-            test.Warning("WarningTestMethod gets completed.");
         }
 
         [TestCleanup]
