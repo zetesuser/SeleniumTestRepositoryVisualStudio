@@ -1,17 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Selenium.Utils;
+﻿using Selenium.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace ZetesVulcan.Test.BackOffice
 {
-    [TestClass]
+    //[TestClass] //using Microsoft.VisualStudio.TestTools.UnitTesting;
+    [TestFixture] //using NUnit.Framework;
     public class TestIE
     {
-        private Login _login;
+        private Authencation _login;
 
         //[TestCase("Authentication")]
         private readonly string Expected_PageTitle = "Authentication";
@@ -21,12 +22,11 @@ namespace ZetesVulcan.Test.BackOffice
         private readonly string Password = "";
         private readonly string Expected_PasswordRequired = "Palavra-chave é de preenchimento obrigatório";
 
-        //[SetUp]
-        [TestMethod]
-        public void Initialized()
-
+        //[TestMethod] //using Microsoft.VisualStudio.TestTools.UnitTesting;
+        [Test] //using NUnit.Framework;
+        public void LoginWithouPassword()
         {
-            _login = new Login(Browser.InternetExplorer);
+            _login = new Authencation(Browser.InternetExplorer);
             _login.LoadPage();
 
             string Return_PageTitle = _login.ReturnTitle();
@@ -40,7 +40,6 @@ namespace ZetesVulcan.Test.BackOffice
 
             _login.SetClose();
         }
-
         //[TearDown]
     }
 }

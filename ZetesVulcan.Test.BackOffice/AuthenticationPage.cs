@@ -9,12 +9,12 @@ namespace ZetesVulcan.Test.BackOffice
 {
     public class AuthenticationPage
     {
-        private IWebDriver _driver;
+        private OpenQA.Selenium.IWebDriver _driver;
         By username = By.Id("Username");
         By password = By.Id("Password");
         By buttonbtnprimary = By.ClassName("btn-primary");
 
-        public AuthenticationPage(IWebDriver driver)
+        public AuthenticationPage(OpenQA.Selenium.IWebDriver driver)
         {
             _driver = driver;
         }

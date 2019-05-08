@@ -1,18 +1,19 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Selenium.Utils;
+﻿using Selenium.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ZetesVulcan.Test.BackOffice
 {
-    //[TestFixture]
-    [TestClass]
+    //[TestClass] //using Microsoft.VisualStudio.TestTools.UnitTesting;
+    [TestFixture] //using NUnit.Framework;
     public class TestChrome
     {
-        private Login _login;
+        private Authencation _login;
 
         //[TestCase("Authentication")]
         private readonly string Expected_PageTitle = "Authentication";
@@ -22,13 +23,13 @@ namespace ZetesVulcan.Test.BackOffice
         private readonly string Password = "";
         private readonly string Expected_PasswordRequired = "Palavra-chave é de preenchimento obrigatório";
 
-        //[SetUp]
-        [TestMethod]
-        public void Initialized()
+        //[TestMethod] //using Microsoft.VisualStudio.TestTools.UnitTesting;
+        [Test] //using NUnit.Framework;
+        public void LoginWithouPassword()
         {
             try
             {
-                _login = new Login(Browser.Chrome);
+                _login = new Authencation(Browser.Chrome);
                 _login.LoadPage();
 
                 string Return_PageTitle = _login.ReturnTitle();
@@ -46,13 +47,7 @@ namespace ZetesVulcan.Test.BackOffice
             {
                 string error = ex.ToString();
             }
-            //finally
-            //{
-            //    _login.SetClose();
-            //}
         }
-
         //[TearDown]
-
     }
 }

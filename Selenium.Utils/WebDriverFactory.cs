@@ -38,9 +38,7 @@ namespace Selenium.Utils
                     webDriver.SwitchTo().ParentFrame();
                     break;
             }
-
             return webDriver;
         }
-      
     }
 }

@@ -7,12 +7,12 @@ using OpenQA.Selenium.Support.UI;
 
 namespace ZetesVulcan.Test.BackOffice
 {
-    public class Login
+    public class Authencation
     {
         private Browser _browser;
-        private IWebDriver _driver;
+        private OpenQA.Selenium.IWebDriver _driver;
 
-        public Login(Browser browser)
+        public Authencation(Browser browser)
         {
             _browser = browser;
              string pathDriver = null;
@@ -38,7 +38,8 @@ namespace ZetesVulcan.Test.BackOffice
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
             _driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["UrlBackOffice"]);
-            _driver.Manage().Window.Maximize();
+            _driver.Manage().Window.Maximize();           
+            string screenshotpath = TakesScreenshot.Capture(_driver, "Screenshots\\" + _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
         }
 
         public string ReturnTitle()
@@ -48,25 +49,18 @@ namespace ZetesVulcan.Test.BackOffice
 
         public void SetField_Username(string value)
         {
-            //IWebElement setfieldUsername = _driver.FindElement(By.Id("Username"));
-            //setfieldUsername.SendKeys(value.ToString());
             AuthenticationPage authenticationPage = new AuthenticationPage(_driver);
             authenticationPage.TypeUsername();
         }
 
         public void SetField_Password(string value)
         {
-            //IWebElement setfieldPassword = _driver.FindElement(By.Id("Password"));
-            //setfieldPassword.SendKeys(value.ToString());
             AuthenticationPage authenticationPage = new AuthenticationPage(_driver);
             authenticationPage.TypePassword();
         }
 
         public void SetButton_btnprimary()
         {
-            //IWebElement setbuttonbtnprimary = _driver.FindElement(By.ClassName("btn-primary"));
-            //setbuttonbtnprimary.Submit();
-
             AuthenticationPage authenticationPage = new AuthenticationPage(_driver);
             authenticationPage.SetButtonPrimary();
 
