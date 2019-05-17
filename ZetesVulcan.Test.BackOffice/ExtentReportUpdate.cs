@@ -21,7 +21,7 @@ namespace ZetesVulcan.Test.BackOffice
 
         static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("extentReportUpdate.html");
         static ExtentReports extent = new ExtentReports();
-        
+
 
         [TestInitialize]
         public void Setup()
@@ -44,12 +44,21 @@ namespace ZetesVulcan.Test.BackOffice
         [TestMethod]
         public void Chrome()
         {
-            TestChrome testchrome = new TestChrome();
-            testchrome.LoginWithouPassword();
 
-            var test = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser Chrome</div>", "<h3>This test method gets passed</h3>");
-            test.Log(Status.Info, "First step of PassedTestMethod");
-            test.Pass("<div style='color:green; font -weight :bold'>PassedTestMethod gets completed.</div>");
+            var parentTest = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser Chrome</div>", "<h3>This test method gets passed</h3>");
+            parentTest.Log(Status.Info, "First step of PassedTestMethod");
+            parentTest.Pass("<div style='color:green; font -weight :bold'>PassedTestMethod gets completed.</div>");
+
+            TestChrome testchrome = new TestChrome();
+            testchrome.LoginWithoutPassword();
+            var childTest = parentTest.CreateNode("LoginWithoutPassword");
+            childTest.Log(Status.Info, "aaa");
+            childTest.Pass("child pass");
+
+            testchrome.LoginWithoutPassword();
+            var childTest2 = parentTest.CreateNode("LoginWithoutPassword");
+            childTest2.Log(Status.Info, "bbb");
+            childTest2.Fail("child pass");
         }
 
         [TestMethod]
