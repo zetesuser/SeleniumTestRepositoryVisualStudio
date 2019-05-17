@@ -67,15 +67,21 @@ namespace ZetesVulcan.Test.BackOffice
             wait.Until((d) => d.FindElement(By.Id("Password-error")) != null);
         }
 
-        public string Getlabel_helpblockerror()
+        public string Getlabel_helpblockerror_User()
         {
-            IWebElement getlabelhelpblockerror = _driver.FindElement(By.Id("Password-error"));
-            return getlabelhelpblockerror.Text;
+            IWebElement getlabelhelpblockerror_User = _driver.FindElement(By.Id("Username-error"));
+            return getlabelhelpblockerror_User.Text;
+        }
+
+        public string Getlabel_helpblockerror_Password()
+        {
+            IWebElement getlabelhelpblockerror_Password = _driver.FindElement(By.Id("Password-error"));
+            return getlabelhelpblockerror_Password.Text;
         }
 
         public void SetClose()
         {
-            //_driver.Close();
+            _driver.Close();
             _driver.Quit();
             _driver = null;
         }

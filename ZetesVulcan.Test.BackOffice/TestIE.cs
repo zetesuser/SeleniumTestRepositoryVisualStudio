@@ -27,34 +27,50 @@ namespace ZetesVulcan.Test.BackOffice
         //[TestCase("admin", "", "Palavra-chave é de preenchimento obrigatório")] //using NUnit.Framework;
         private readonly string User = "admin";
         private readonly string Password = "";
+        private readonly string Expected_UserRequired = "Utilizador é de preenchimento obrigatório";
         private readonly string Expected_PasswordRequired = "Palavra-chave é de preenchimento obrigatório";
-
-        //[TestInitialize]
-        //public void ExtentReportSetup()
-        //{
-        //    htmlReporter.AppendExisting = true;
-        //    extent.AttachReporter(htmlReporter);
-        //}
-
-        //[TestMethod]
-        //public void ExtentReportEnvVariables()
-        //{
-        //    string hostname = Dns.GetHostName();
-        //    OperatingSystem os = Environment.OSVersion;
-        //    extent.AddSystemInfo("Operation System:", os.ToString());
-        //    extent.AddSystemInfo("Hostname: ", hostname);
-        //    extent.AddSystemInfo("Browser: ", "Google Chrome");
-        //}
 
         //[TestMethod] //using Microsoft.VisualStudio.TestTools.UnitTesting;
         //[Test] //using NUnit.Framework;
-        public void LoginWithouPassword()
+        public Tuple<int, string> LoginWithouUser(IEnumerable<double> valReturn)
         {
-            //var test = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser Internet Explorer</div>", "<h3>Authentication - > Login Withou Password</h3>");
-
             try
             {
-                //test.Log(Status.Info, "Inicialize");
+                _login = new Authencation(Browser.InternetExplorer);
+                _login.LoadPage();
+
+                string Return_PageTitle = _login.ReturnTitle();
+                Assert.AreEqual(Expected_PageTitle, Return_PageTitle);
+
+                _login.SetField_Username("");
+                _login.SetButton_btnprimary();
+                string return_UserRequired = _login.Getlabel_helpblockerror_User();
+                Assert.AreEqual(Expected_UserRequired, return_UserRequired);
+
+                _login.SetClose();
+
+                int intResult = 1;
+                string strResult = "";
+                return Tuple.Create(intResult, strResult);
+            }
+            catch (Exception ex)
+            {
+                _login.SetClose();
+                int intResult = 0;
+                string strResult = ex.ToString();
+                return Tuple.Create(intResult, strResult);
+            }
+        }
+
+        [TestMethod] //using Microsoft.VisualStudio.TestTools.UnitTesting;
+        //[TestProperty("User", "admin")] //using NUnit.Framework;
+        //[TestProperty("Password", "")] //using NUnit.Framework;
+        //[TestProperty("Expected_PasswordRequired", "Palavra-chave é de preenchimento obrigatório")] //using NUnit.Framework;
+        //[Test] //using NUnit.Framework;
+        public Tuple<int, string> LoginWithoutPassword(IEnumerable<double> valReturn)
+        {
+            try
+            {
                 _login = new Authencation(Browser.InternetExplorer);
                 _login.LoadPage();
 
@@ -64,25 +80,22 @@ namespace ZetesVulcan.Test.BackOffice
                 _login.SetField_Username(User);
                 _login.SetField_Password(Password);
                 _login.SetButton_btnprimary();
-                string return_PasswordRequired = _login.Getlabel_helpblockerror();
+                string return_PasswordRequired = _login.Getlabel_helpblockerror_Password();
                 Assert.AreEqual(Expected_PasswordRequired, return_PasswordRequired);
 
                 _login.SetClose();
-                //test.Log(Status.Info, "Finalize");
 
-                //test.Pass("<div style='color:green; font -weight :bold'>Authentication - > Login Withou Password.</div>");
+                int intResult = 1;
+                string strResult = "";
+                return Tuple.Create(intResult, strResult);
             }
             catch (Exception ex)
             {
-                string error = ex.ToString();
-                //test.Fail("<div style='color:red; font -weight :bold'>Authentication - > Login Withou Password -> " + error + ".</div>");
+                _login.SetClose();
+                int intResult = 0;
+                string strResult = ex.ToString();
+                return Tuple.Create(intResult, strResult);
             }
         }
-
-        //[TestCleanup]
-        //public void Cleanup()
-        //{
-        //    //extent.Flush();
-        //}
     }
 }

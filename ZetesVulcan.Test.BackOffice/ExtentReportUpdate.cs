@@ -22,14 +22,11 @@ namespace ZetesVulcan.Test.BackOffice
         static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("extentReportUpdate.html");
         static ExtentReports extent = new ExtentReports();
 
-
         [TestInitialize]
         public void Setup()
         {
-
             extent.AttachReporter(htmlReporter);
         }
-
 
         [TestMethod]
         public void EnvVariables()
@@ -38,50 +35,165 @@ namespace ZetesVulcan.Test.BackOffice
             OperatingSystem os = Environment.OSVersion;
             extent.AddSystemInfo("Operation System:", os.ToString());
             extent.AddSystemInfo("Hostname: ", hostname);
-            extent.AddSystemInfo("Browser: ", "Google Chrome");
         }
 
         [TestMethod]
         public void Chrome()
         {
 
-            var parentTest = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser Chrome</div>", "<h3>This test method gets passed</h3>");
-            parentTest.Log(Status.Info, "First step of PassedTestMethod");
-            parentTest.Pass("<div style='color:green; font -weight :bold'>PassedTestMethod gets completed.</div>");
+            var parentTest = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser Chrome</div>", "<h3>Authentication</h3>");
+            parentTest.Log(Status.Info, "Start Chrome Authentication test");
+
+            var childTest = parentTest;
 
             TestChrome testchrome = new TestChrome();
-            testchrome.LoginWithoutPassword();
-            var childTest = parentTest.CreateNode("LoginWithoutPassword");
-            childTest.Log(Status.Info, "aaa");
-            childTest.Pass("child pass");
+            IEnumerable<double> values = null;
 
-            testchrome.LoginWithoutPassword();
-            var childTest2 = parentTest.CreateNode("LoginWithoutPassword");
-            childTest2.Log(Status.Info, "bbb");
-            childTest2.Fail("child pass");
+            var resultsChromeLoginWithouUser = testchrome.LoginWithouUser(values);
+            switch (resultsChromeLoginWithouUser.Item1)
+            {            
+                case 1:
+                    {
+                        childTest = parentTest.CreateNode("Login Without User");
+                        childTest.Log(Status.Info, "Success Login Without User");
+                        childTest.Pass("Successs");
+                        break;
+                    }
+                case 0:
+                    {
+                        childTest = parentTest.CreateNode("Login Without User");
+                        childTest.Log(Status.Info, "Fail Login Without User");
+                        childTest.Fail(resultsChromeLoginWithouUser.Item2);
+                        break;
+                    }
+            }
+
+            var resultsChromeLoginWithoutPassword = testchrome.LoginWithoutPassword(values);
+            switch (resultsChromeLoginWithoutPassword.Item1)
+            {
+                case 1:
+                    {
+                        childTest = parentTest.CreateNode("Login Without Password");
+                        childTest.Log(Status.Info, "Success Login Without Password");
+                        childTest.Pass("Successs");
+                        break;
+                    }
+                case 0:
+                    {
+                        childTest = parentTest.CreateNode("Login Without Password");
+                        childTest.Log(Status.Info, "Fail Login Without Password");
+                        childTest.Fail(resultsChromeLoginWithouUser.Item2);
+                        break;
+                    }
+            }
+           
+            parentTest.Log(Status.Info, "<div style='color:green; font -weight :bold'>End Chrome Authentication test</div>");
+
         }
 
         [TestMethod]
         public void Firefox()
         {
 
-            TestFirefox testfirefox = new TestFirefox();
-            testfirefox.LoginWithouPassword();
+            var parentTest = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser FireFox</div>", "<h3>Authentication</h3>");
+            parentTest.Log(Status.Info, "Start FireFox Authentication test");
 
-            var test = extent.CreateTest("<div style='color:red; font -weight :bold'>Browser Firefox</div>", "<h3>This test method gets failled</h3>");
-            test.Log(Status.Info, "First step of FailledTestMethod");
-            test.Fail("<div style='color:red; font -weight :bold'>FailledTestMethod gets completed.</div>");
+            var childTest = parentTest;
+
+            TestFirefox testfirefox = new TestFirefox();
+            IEnumerable<double> values = null;
+
+            var resultsFireFoxLoginWithouUser = testfirefox.LoginWithouUser(values);
+            switch (resultsFireFoxLoginWithouUser.Item1)
+            {
+                case 1:
+                    {
+                        childTest = parentTest.CreateNode("Login Without User");
+                        childTest.Log(Status.Info, "Success Login Without User");
+                        childTest.Pass("Successs");
+                        break;
+                    }
+                case 0:
+                    {
+                        childTest = parentTest.CreateNode("Login Without User");
+                        childTest.Log(Status.Info, "Fail Login Without User");
+                        childTest.Fail(resultsFireFoxLoginWithouUser.Item2);
+                        break;
+                    }
+            }
+
+            var resultsFireFoxLoginWithoutPassword = testfirefox.LoginWithouPassword(values);
+            switch (resultsFireFoxLoginWithoutPassword.Item1)
+            {
+                case 1:
+                    {
+                        childTest = parentTest.CreateNode("Login Without Password");
+                        childTest.Log(Status.Info, "Success Login Without Password");
+                        childTest.Pass("Successs");
+                        break;
+                    }
+                case 0:
+                    {
+                        childTest = parentTest.CreateNode("Login Without Password");
+                        childTest.Log(Status.Info, "Fail Login Without Password");
+                        childTest.Fail(resultsFireFoxLoginWithoutPassword.Item2);
+                        break;
+                    }
+            }
+            
+            parentTest.Log(Status.Info, "<div style='color:green; font -weight :bold'>End FireFox Authentication test</div>");
         }
 
         [TestMethod]
         public void InternetExplorer()
         {
-            TestIE testie = new TestIE();
-            testie.LoginWithouPassword();
+            var parentTest = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser InternetExplorer</div>", "<h3>Authentication</h3>");
+            parentTest.Log(Status.Info, "Start InternetExplorer Authentication test");
 
-            var test = extent.CreateTest("Browser Internet Explorer", "This test method gets skipped");
-            test.Log(Status.Info, "First step of SkippedTestMethod");
-            test.Skip("SkippedTestMethod gets completed.");
+            var childTest = parentTest;
+
+            TestIE testie = new TestIE();
+            IEnumerable<double> values = null;
+
+            var resultsInternetExplorerLoginWithouUser = testie.LoginWithouUser(values);
+            switch (resultsInternetExplorerLoginWithouUser.Item1)
+            {
+                case 1:
+                    {
+                        childTest = parentTest.CreateNode("Login Without User");
+                        childTest.Log(Status.Info, "Success Login Without User");
+                        childTest.Pass("Successs");
+                        break;
+                    }
+                case 0:
+                    {
+                        childTest = parentTest.CreateNode("Login Without User");
+                        childTest.Log(Status.Info, "Fail Login Without User");
+                        childTest.Fail(resultsInternetExplorerLoginWithouUser.Item2);
+                        break;
+                    }
+            }
+
+            var resultsInternetExplorerLoginWithoutPassword = testie.LoginWithoutPassword(values);
+            switch (resultsInternetExplorerLoginWithoutPassword.Item1)
+            {
+                case 1:
+                    {
+                        childTest = parentTest.CreateNode("Login Without Password");
+                        childTest.Log(Status.Info, "Success Login Without Password");
+                        childTest.Pass("Successs");
+                        break;
+                    }
+                case 0:
+                    {
+                        childTest = parentTest.CreateNode("Login Without Password");
+                        childTest.Log(Status.Info, "Fail Login Without Password");
+                        childTest.Fail(resultsInternetExplorerLoginWithoutPassword.Item2);
+                        break;
+                    }
+            }
+            
+            parentTest.Log(Status.Info, "<div style='color:green; font -weight :bold'>End InternetExplorer Authentication test</div>");
         }
 
         [TestCleanup]
