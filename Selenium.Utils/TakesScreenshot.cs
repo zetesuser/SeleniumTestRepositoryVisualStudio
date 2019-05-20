@@ -23,10 +23,16 @@ namespace Selenium.Utils
             UriBuilder uri = new UriBuilder(codeBase);
             string path = Uri.UnescapeDataString(uri.Path);
 
-            if (!Directory.Exists(path.Substring(0, path.LastIndexOf("bin")) + pathScreenshot))
+            //if (!Directory.Exists(path.Substring(0, path.LastIndexOf("bin")) + pathScreenshot))
+            //{
+            //    Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("bin")) + pathScreenshot).ToString());
+            //}
+
+            if (!Directory.Exists(path.Substring(0, path.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) + pathScreenshot))
             {
-                Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("bin")) + pathScreenshot).ToString());
+                Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) + pathScreenshot).ToString());
             }
+
 
             string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathScreenshot + nameScreenshot + ".png";
             string localPath = new Uri(uptobinPath).LocalPath;
