@@ -34,7 +34,8 @@ namespace Selenium.Utils
             }
 
 
-            string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathScreenshot + nameScreenshot + ".png";
+            //string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathScreenshot + nameScreenshot + ".png";
+            string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) + pathScreenshot + nameScreenshot + ".png";
             string localPath = new Uri(uptobinPath).LocalPath;
             screenshot.SaveAsFile(localPath, ScreenshotImageFormat.Png);
             return localPath;
