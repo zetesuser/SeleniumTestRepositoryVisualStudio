@@ -18,7 +18,7 @@ namespace ZetesVulcan.Test.BackOffice
     //    public void ExtentReportTest()
     //    {
 
-    //        var htmlReporter = new ExtentHtmlReporter("extentReport.html");
+    //        var htmlReporter = new ExtentHtmlReporter("extentReport.html") ;
     //        var extent = new ExtentReports();            
     //        extent.AttachReporter(htmlReporter);
 
