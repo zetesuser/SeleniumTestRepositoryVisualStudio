@@ -91,7 +91,7 @@ namespace ZetesVulcan.Test.BackOffice
                     }
             }
            
-            parentTest.Log(Status.Info, "<div style='color:blue; font -weight :bold'>End Chrome Authentication test</div>");
+            parentTest.Log(Status.Info, "<div style='color:green; font -weight :bold'>End Chrome Authentication test</div>");
 
         }
 
@@ -99,7 +99,7 @@ namespace ZetesVulcan.Test.BackOffice
         public void Firefox()
         {
 
-            var parentTest = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser FireFox</div>", "<h3>Authentication</h3>");
+            var parentTest = extent.CreateTest("<div style='color:blue; font -weight :bold'>Browser FireFox</div>", "<h3>Authentication</h3>");
             parentTest.Log(Status.Info, "Start FireFox Authentication test");
 
             var childTest = parentTest;
@@ -149,13 +149,13 @@ namespace ZetesVulcan.Test.BackOffice
                     }
             }
             
-            parentTest.Log(Status.Info, "<div style='color:orange; font -weight :bold'>End FireFox Authentication test</div>");
+            parentTest.Log(Status.Info, "<div style='color:green; font -weight :bold'>End FireFox Authentication test</div>");
         }
 
         [TestMethod]
         public void InternetExplorer()
         {
-            var parentTest = extent.CreateTest("<div style='color:green; font -weight :bold'>Browser InternetExplorer</div>", "<h3>Authentication</h3>");
+            var parentTest = extent.CreateTest("<div style='color:orange; font -weight :bold'>Browser InternetExplorer</div>", "<h3>Authentication</h3>");
             parentTest.Log(Status.Info, "Start InternetExplorer Authentication test");
 
             var childTest = parentTest;
