@@ -41,7 +41,7 @@ namespace ZetesVulcan.Test.BackOffice
         public void Chrome()
         {
 
-            var parentTest = extent.CreateTest("<div style='color:orange; font -weight :bold'>Browser Chrome</div>", "<h3>Authentication</h3>");
+            var parentTest = extent.CreateTest("<div style='color:blue; font -weight :bold'>Browser Chrome</div>", "<h3>Authentication</h3>");
             parentTest.Log(Status.Info, "Start Chrome Authentication test");
 
             var childTest = parentTest;
@@ -56,6 +56,7 @@ namespace ZetesVulcan.Test.BackOffice
                     {
                         childTest = parentTest.CreateNode("Login Without User");
                         childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3);
+
                         childTest.Log(Status.Info, "Success Login Without User");
                         childTest.Pass("Successs");
                         break;
@@ -155,7 +156,7 @@ namespace ZetesVulcan.Test.BackOffice
         [TestMethod]
         public void InternetExplorer()
         {
-            var parentTest = extent.CreateTest("<div style='color:orange; font -weight :bold'>Browser InternetExplorer</div>", "<h3>Authentication</h3>");
+            var parentTest = extent.CreateTest("<div style='color:blue; font -weight :bold'>Browser InternetExplorer</div>", "<h3>Authentication</h3>");
             parentTest.Log(Status.Info, "Start InternetExplorer Authentication test");
 
             var childTest = parentTest;
