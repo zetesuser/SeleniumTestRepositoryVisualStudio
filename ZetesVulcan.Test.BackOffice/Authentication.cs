@@ -3,6 +3,7 @@ using System.Configuration;
 using Selenium.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Collections.Generic;
 
 namespace ZetesVulcan.Test.BackOffice
 {
@@ -37,8 +38,7 @@ namespace ZetesVulcan.Test.BackOffice
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
             _driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["UrlBackOffice"]);
-            _driver.Manage().Window.Maximize();           
-            string screenshotpath = TakesScreenshot.Capture(_driver, "Screenshots\\" + _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+            _driver.Manage().Window.Maximize();
         }
 
         public string ReturnTitle()
@@ -49,34 +49,44 @@ namespace ZetesVulcan.Test.BackOffice
         public void SetField_Username(string value)
         {
             AuthenticationPage authenticationPage = new AuthenticationPage(_driver);
-            authenticationPage.TypeUsername();
+            authenticationPage.TypeUsername(value);
         }
 
         public void SetField_Password(string value)
         {
             AuthenticationPage authenticationPage = new AuthenticationPage(_driver);
-            authenticationPage.TypePassword();
+            authenticationPage.TypePassword(value);
         }
 
         public void SetButton_btnprimary()
         {
             AuthenticationPage authenticationPage = new AuthenticationPage(_driver);
             authenticationPage.SetButtonPrimary();
+        }
 
+        public Tuple<string, string> Getlabel_helpblockerror_User(IEnumerable<double> valReturn)
+        {
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
+            wait.Until((d) => d.FindElement(By.Id("Username-error")) != null);
+
+            IWebElement getlabelhelpblockerror_User = _driver.FindElement(By.Id("Username-error"));
+
+            string screenshotpath = TakesScreenshot.Capture(_driver, "Screenshots\\" + _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+
+            return Tuple.Create(getlabelhelpblockerror_User.Text, screenshotpath);
+
+        }
+
+        public Tuple<string, string> Getlabel_helpblockerror_Password(IEnumerable<double> valReturn)
+        {
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
             wait.Until((d) => d.FindElement(By.Id("Password-error")) != null);
-        }
 
-        public string Getlabel_helpblockerror_User()
-        {
-            IWebElement getlabelhelpblockerror_User = _driver.FindElement(By.Id("Username-error"));
-            return getlabelhelpblockerror_User.Text;
-        }
-
-        public string Getlabel_helpblockerror_Password()
-        {
             IWebElement getlabelhelpblockerror_Password = _driver.FindElement(By.Id("Password-error"));
-            return getlabelhelpblockerror_Password.Text;
+
+            string screenshotpath = TakesScreenshot.Capture(_driver, "Screenshots\\" + _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+
+            return Tuple.Create(getlabelhelpblockerror_Password.Text, screenshotpath);
         }
 
         public void SetClose()

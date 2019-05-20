@@ -89,7 +89,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExtentReport.cs" />
     <Compile Include="AuthenticationPage.cs" />
     <Compile Include="ExtentReportUpdate.cs" />
     <Compile Include="TestIE.cs" />

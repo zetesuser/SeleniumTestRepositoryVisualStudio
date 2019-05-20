@@ -19,14 +19,14 @@ namespace ZetesVulcan.Test.BackOffice
             _driver = driver;
         }
 
-        public void TypeUsername()
+        public void TypeUsername(string typeUser)
         {
-            _driver.FindElement(username).SendKeys("");
+            _driver.FindElement(username).SendKeys(typeUser);
         }
 
-        public void TypePassword()
+        public void TypePassword(string typePassword)
         {
-            _driver.FindElement(password).SendKeys("");
+            _driver.FindElement(password).SendKeys(typePassword);
         }
 
         public void SetButtonPrimary()

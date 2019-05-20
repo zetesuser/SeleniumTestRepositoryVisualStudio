@@ -31,8 +31,10 @@ namespace ZetesVulcan.Test.BackOffice
 
         //[TestMethod] //using Microsoft.VisualStudio.TestTools.UnitTesting;
         //[Test] //using NUnit.Framework;
-        public Tuple<int, string> LoginWithouUser(IEnumerable<double> valReturn)
+        public Tuple<int, string,string> LoginWithouUser(IEnumerable<double> valReturn)
         {
+            IEnumerable<double> values = null;
+            string strscreenshotpath = "";
             try
             {
                 _login = new Authencation(Browser.Chrome);
@@ -43,21 +45,25 @@ namespace ZetesVulcan.Test.BackOffice
 
                 _login.SetField_Username("");                
                 _login.SetButton_btnprimary();
-                string return_UserRequired = _login.Getlabel_helpblockerror_User();
-                Assert.AreEqual(Expected_UserRequired, return_UserRequired);
+
+                var return_UserRequired = _login.Getlabel_helpblockerror_User(values);
+
+                strscreenshotpath = return_UserRequired.Item2;
+                Assert.AreEqual(Expected_UserRequired, return_UserRequired.Item1);
+                
 
                 _login.SetClose();
 
                 int intResult = 1;
                 string strResult = "";
-                return Tuple.Create(intResult, strResult);
+                return Tuple.Create(intResult, strResult, strscreenshotpath);
             }
             catch (Exception ex)
             {
                 _login.SetClose();
                 int intResult = 0;
                 string strResult = ex.ToString();
-                return Tuple.Create(intResult, strResult);
+                return Tuple.Create(intResult, strResult, strscreenshotpath);
             }
         }
 
@@ -66,8 +72,10 @@ namespace ZetesVulcan.Test.BackOffice
         //[TestProperty("Password", "")] //using NUnit.Framework;
         //[TestProperty("Expected_PasswordRequired", "Palavra-chave é de preenchimento obrigatório")] //using NUnit.Framework;
         //[Test] //using NUnit.Framework;
-        public Tuple<int, string> LoginWithoutPassword(IEnumerable<double> valReturn)
+        public Tuple<int, string, string> LoginWithoutPassword(IEnumerable<double> valReturn)
         {
+            IEnumerable<double> values = null;
+            string strscreenshotpath = "";
             try
             {
                 _login = new Authencation(Browser.Chrome);
@@ -79,21 +87,24 @@ namespace ZetesVulcan.Test.BackOffice
                 _login.SetField_Username(User);
                 _login.SetField_Password(Password);
                 _login.SetButton_btnprimary();
-                string return_PasswordRequired = _login.Getlabel_helpblockerror_Password();
-                Assert.AreEqual(Expected_PasswordRequired, return_PasswordRequired);
+
+                var return_PasswordRequired = _login.Getlabel_helpblockerror_Password(values);
+
+                strscreenshotpath = return_PasswordRequired.Item2;
+                Assert.AreEqual(Expected_PasswordRequired, return_PasswordRequired.Item1);
 
                 _login.SetClose();
 
                 int intResult = 1;
-                string strResult = "";
-                return Tuple.Create(intResult, strResult);
+                string strResult = "";                
+                return Tuple.Create(intResult, strResult, strscreenshotpath);
             }
             catch (Exception ex)
             {
                 _login.SetClose();
                 int intResult = 0;
-                string strResult = ex.ToString();
-                return Tuple.Create(intResult, strResult);
+                string strResult = ex.ToString();              
+                return Tuple.Create(intResult, strResult, strscreenshotpath);
             }            
         }
     }
