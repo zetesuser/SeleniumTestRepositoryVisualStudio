@@ -22,7 +22,7 @@ namespace ZetesVulcan.Test.BackOffice
     {
         //string screenshotextent = ExtentsReport.ExtentSelenium("ExtentGenerate\\", "Report\\");
 
-        static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(ExtentsReport.ExtentSelenium("ExtentGenerate\\", "Report\\") + "extentReportUpdate.html");
+        static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(ExtentsReport.ExtentSelenium("ExtentGenerate\\", "Report\\") + "extentReport.html");
         static ExtentReports extent = new ExtentReports();
 
         [TestInitialize]
