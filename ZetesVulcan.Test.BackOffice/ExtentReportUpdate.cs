@@ -74,7 +74,7 @@ namespace ZetesVulcan.Test.BackOffice
                     }
             }
 
-            parentTest.Info("aaaa").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3));
+            parentTest.Info("aaaa").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3);
 
             var resultsChromeLoginWithoutPassword = testchrome.LoginWithoutPassword(values);
             switch (resultsChromeLoginWithoutPassword.Item1)
