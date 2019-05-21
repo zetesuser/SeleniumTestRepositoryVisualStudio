@@ -52,7 +52,7 @@ namespace ZetesVulcan.Test.BackOffice
 
             var resultsChromeLoginWithouUser = testchrome.LoginWithouUser(values);
             switch (resultsChromeLoginWithouUser.Item1)
-            {            
+            {
                 case 1:
                     {
                         childTest = parentTest.CreateNode("Login Without User");
@@ -91,7 +91,7 @@ namespace ZetesVulcan.Test.BackOffice
                         break;
                     }
             }
-           
+
             parentTest.Log(Status.Info, "<div style='color:green; font -weight :bold'>End Chrome Authentication test</div>");
 
         }
@@ -149,7 +149,7 @@ namespace ZetesVulcan.Test.BackOffice
                         break;
                     }
             }
-            
+
             parentTest.Log(Status.Info, "<div style='color:green; font -weight :bold'>End FireFox Authentication test</div>");
         }
 
@@ -205,7 +205,7 @@ namespace ZetesVulcan.Test.BackOffice
                         break;
                     }
             }
-            
+
             parentTest.Log(Status.Info, "<div style='color:green; font -weight :bold'>End InternetExplorer Authentication test</div>");
         }
 
@@ -214,34 +214,33 @@ namespace ZetesVulcan.Test.BackOffice
         {
             extent.Flush();
 
-            string codeBase = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
-            UriBuilder uri = new UriBuilder(codeBase);
-            string SourcePath = Uri.UnescapeDataString(uri.Path);
-            string uptobinSourcePath = SourcePath.Substring(0, SourcePath.LastIndexOf("bin")) + "Screenshots";
+            //    string codeBase = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+            //    UriBuilder uri = new UriBuilder(codeBase);
+            //    string SourcePath = Uri.UnescapeDataString(uri.Path);
+            //    string uptobinSourcePath = SourcePath.Substring(0, SourcePath.LastIndexOf("bin")) + "Screenshots";
 
-            string DestinationPath = Uri.UnescapeDataString(uri.Path);
-            string uptobinDestinationPath = DestinationPath.Substring(0, DestinationPath.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) ;
+            //    string DestinationPath = Uri.UnescapeDataString(uri.Path);
+            //    string uptobinDestinationPath = DestinationPath.Substring(0, DestinationPath.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) ;
 
 
-            if (!Directory.Exists(uptobinSourcePath))
-            {
-                Directory.CreateDirectory(uptobinSourcePath.ToString());
-            }
+            //    if (!Directory.Exists(uptobinSourcePath))
+            //    {
+            //        Directory.CreateDirectory(uptobinSourcePath.ToString());
+            //    }
 
-            //Now Create all of the directories
-            if (!Directory.Exists((uptobinDestinationPath) + "Screenshots"))
-            {
-                Directory.CreateDirectory((uptobinDestinationPath.ToString()) + "Screenshots");
-            }
-            foreach (string dirPath in Directory.GetDirectories(uptobinSourcePath, "*",
-                SearchOption.AllDirectories))
-                Directory.CreateDirectory(dirPath.Replace(uptobinSourcePath, (uptobinDestinationPath.ToString()) + "Screenshots"));
+            //    //Now Create all of the directories
+            //    if (!Directory.Exists((uptobinDestinationPath) + "Screenshots"))
+            //    {
+            //        Directory.CreateDirectory((uptobinDestinationPath.ToString()) + "Screenshots");
+            //    }
+            //    foreach (string dirPath in Directory.GetDirectories(uptobinSourcePath, "*",
+            //        SearchOption.AllDirectories))
+            //        Directory.CreateDirectory(dirPath.Replace(uptobinSourcePath, (uptobinDestinationPath.ToString()) + "Screenshots"));
 
-            //Copy all the files & Replaces any files with the same name
-            foreach (string newPath in Directory.GetFiles(uptobinSourcePath, "*.*",
-                SearchOption.AllDirectories))
-                File.Copy(newPath, newPath.Replace(uptobinSourcePath, (uptobinDestinationPath.ToString()) + "Screenshots"), true);
+            //    //Copy all the files & Replaces any files with the same name
+            //    foreach (string newPath in Directory.GetFiles(uptobinSourcePath, "*.*",
+            //        SearchOption.AllDirectories))
+            //        File.Copy(newPath, newPath.Replace(uptobinSourcePath, (uptobinDestinationPath.ToString()) + "Screenshots"), true);
         }
-
     }
 }
