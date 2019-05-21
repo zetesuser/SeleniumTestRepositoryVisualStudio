@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brower.cs" />
+    <Compile Include="ExtentsReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TakesScreenshot.cs" />
     <Compile Include="WebDriverFactory.cs" />

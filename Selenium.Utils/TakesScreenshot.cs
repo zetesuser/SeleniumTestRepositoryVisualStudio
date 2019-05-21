@@ -14,7 +14,7 @@ namespace Selenium.Utils
     public static class TakesScreenshot
     {
 
-        public static string Capture(IWebDriver webDriver, string pathScreenshot, string nameScreenshot)
+        public static string Capture(IWebDriver webDriver, string pathParentScreenshot, string pathScreenshot, string nameScreenshot)
         {
             ITakesScreenshot ts = (ITakesScreenshot)webDriver;
             Screenshot screenshot = ts.GetScreenshot();            
@@ -23,9 +23,14 @@ namespace Selenium.Utils
             UriBuilder uri = new UriBuilder(codeBase);
             string path = Uri.UnescapeDataString(uri.Path);
 
-            if (!Directory.Exists(path.Substring(0, path.LastIndexOf("bin")) + pathScreenshot))
+            if (!Directory.Exists(path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot))
             {
-                Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("bin")) + pathScreenshot).ToString());
+                Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot).ToString());
+            }
+
+            if (!Directory.Exists(path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot))
+            {
+                Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot).ToString());
             }
 
             //if (!Directory.Exists(path.Substring(0, path.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) + pathScreenshot))
@@ -34,7 +39,7 @@ namespace Selenium.Utils
             //}
 
 
-            string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathScreenshot + nameScreenshot + ".png";
+            string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot + nameScreenshot + ".png";
             //string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) + pathScreenshot + nameScreenshot + ".png";
             string localPath = new Uri(uptobinPath).LocalPath;
             screenshot.SaveAsFile(localPath, ScreenshotImageFormat.Png);

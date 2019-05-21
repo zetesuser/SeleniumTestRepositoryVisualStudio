@@ -71,7 +71,8 @@ namespace ZetesVulcan.Test.BackOffice
 
             IWebElement getlabelhelpblockerror_User = _driver.FindElement(By.Id("Username-error"));
 
-            string screenshotpath = TakesScreenshot.Capture(_driver, "Screenshots\\" + _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+            //string screenshotpath = TakesScreenshot.Capture(_driver, "ExtentGenerate\\Screenshots\\", "Screenshots\\" + _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+            string screenshotpath = TakesScreenshot.Capture(_driver, "ExtentGenerate\\Screenshots\\", _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
 
             return Tuple.Create(getlabelhelpblockerror_User.Text, screenshotpath);
 
@@ -84,7 +85,8 @@ namespace ZetesVulcan.Test.BackOffice
 
             IWebElement getlabelhelpblockerror_Password = _driver.FindElement(By.Id("Password-error"));
 
-            string screenshotpath = TakesScreenshot.Capture(_driver, "Screenshots\\" + _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+            //string screenshotpath = TakesScreenshot.Capture(_driver, "ExtentGenerate\\Screenshots\\", "Screenshots\\" + _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
+            string screenshotpath = TakesScreenshot.Capture(_driver, "ExtentGenerate\\Screenshots\\", _browser + "\\", "Screenshots" + DateTime.Now.ToString("yyyyMMddHHmmssffff"));
 
             return Tuple.Create(getlabelhelpblockerror_Password.Text, screenshotpath);
         }

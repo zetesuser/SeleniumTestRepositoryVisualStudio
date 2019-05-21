@@ -16,15 +16,18 @@ using System.IO;
 
 namespace ZetesVulcan.Test.BackOffice
 {
+
     [TestClass]
     public class ExtentReportUpdate
     {
+        //string screenshotextent = ExtentsReport.ExtentSelenium("ExtentGenerate\\", "Report\\");
 
-        static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("extentReportUpdate.html");
+        static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(ExtentsReport.ExtentSelenium("ExtentGenerate\\", "Report\\") + "extentReportUpdate.html");
         static ExtentReports extent = new ExtentReports();
 
         [TestInitialize]
         public void Setup()
+
         {
             extent.AttachReporter(htmlReporter);
         }
