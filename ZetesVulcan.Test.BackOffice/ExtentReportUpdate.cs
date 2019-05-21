@@ -56,7 +56,6 @@ namespace ZetesVulcan.Test.BackOffice
                     {
                         childTest = parentTest.CreateNode("Login Without User");
                         childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3);
-
                         childTest.Log(Status.Info, "Success Login Without User");
                         childTest.Pass("Successs");
                         break;
