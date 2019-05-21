@@ -22,7 +22,7 @@ namespace ZetesVulcan.Test.BackOffice
     {
         //string screenshotextent = ExtentsReport.ExtentSelenium("ExtentGenerate\\", "Report\\");
 
-        static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(ExtentsReport.ExtentSelenium("ExtentGenerate\\", "Report\\") + "extentReport.html");
+        static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(ExtentsReport.ExtentSelenium("ExtentGenerate\\", "Report\\") + "extentReportupdate.html");
         static ExtentReports extent = new ExtentReports();
 
         [TestInitialize]
@@ -73,6 +73,8 @@ namespace ZetesVulcan.Test.BackOffice
                         break;
                     }
             }
+
+            parentTest.Info("aaaa").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3));
 
             var resultsChromeLoginWithoutPassword = testchrome.LoginWithoutPassword(values);
             switch (resultsChromeLoginWithoutPassword.Item1)
