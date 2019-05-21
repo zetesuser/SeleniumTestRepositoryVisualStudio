@@ -12,6 +12,7 @@ using AventStack.ExtentReports.Reporter;
 using System.Net;
 using System.Configuration;
 using Selenium.Utils;
+using System.IO;
 
 namespace ZetesVulcan.Test.BackOffice
 {
@@ -213,6 +214,23 @@ namespace ZetesVulcan.Test.BackOffice
         {
             extent.Flush();
 
+            string codeBase = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+            UriBuilder uri = new UriBuilder(codeBase);
+            string SourcePath = Uri.UnescapeDataString(uri.Path);
+            string uptobinSourcePath = SourcePath.Substring(0, SourcePath.LastIndexOf("bin")) + "Screenshots";
+
+            string DestinationPath = Uri.UnescapeDataString(uri.Path);
+            string uptobinDestinationPath = DestinationPath.Substring(0, DestinationPath.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) ;
+
+            //Now Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(uptobinSourcePath, "*",
+                SearchOption.AllDirectories))
+                Directory.CreateDirectory(dirPath.Replace(uptobinSourcePath, uptobinDestinationPath));
+
+            //Copy all the files & Replaces any files with the same name
+            foreach (string newPath in Directory.GetFiles(uptobinSourcePath, "*.*",
+                SearchOption.AllDirectories))
+                File.Copy(newPath, newPath.Replace(uptobinSourcePath, uptobinDestinationPath), true);
         }
 
     }
