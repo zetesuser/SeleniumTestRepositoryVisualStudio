@@ -223,20 +223,24 @@ namespace ZetesVulcan.Test.BackOffice
             string uptobinDestinationPath = DestinationPath.Substring(0, DestinationPath.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) ;
 
 
-            if (!Directory.Exists(uptobinSourcePath.Substring(0, uptobinSourcePath.LastIndexOf("bin")) + "Screenshots"))
+            if (!Directory.Exists(uptobinSourcePath))
             {
-                Directory.CreateDirectory((uptobinSourcePath.Substring(0, uptobinSourcePath.LastIndexOf("bin")) + "Screenshots").ToString());
+                Directory.CreateDirectory(uptobinSourcePath.ToString());
             }
 
             //Now Create all of the directories
+            if (!Directory.Exists((uptobinDestinationPath) + "Screenshots"))
+            {
+                Directory.CreateDirectory((uptobinDestinationPath.ToString()) + "Screenshots");
+            }
             foreach (string dirPath in Directory.GetDirectories(uptobinSourcePath, "*",
                 SearchOption.AllDirectories))
-                Directory.CreateDirectory(dirPath.Replace(uptobinSourcePath, uptobinDestinationPath));
+                Directory.CreateDirectory(dirPath.Replace(uptobinSourcePath, (uptobinDestinationPath.ToString()) + "Screenshots"));
 
             //Copy all the files & Replaces any files with the same name
             foreach (string newPath in Directory.GetFiles(uptobinSourcePath, "*.*",
                 SearchOption.AllDirectories))
-                File.Copy(newPath, newPath.Replace(uptobinSourcePath, uptobinDestinationPath), true);
+                File.Copy(newPath, newPath.Replace(uptobinSourcePath, (uptobinDestinationPath.ToString()) + "Screenshots"), true);
         }
 
     }
