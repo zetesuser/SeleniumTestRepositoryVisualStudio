@@ -33,14 +33,8 @@ namespace Selenium.Utils
                 Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot).ToString());
             }
 
-            //if (!Directory.Exists(path.Substring(0, path.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) + pathScreenshot))
-            //{
-            //    Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) + pathScreenshot).ToString());
-            //}
-
-
-            string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot + nameScreenshot + ".png";
-            //string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) + pathScreenshot + nameScreenshot + ".png";
+            //string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot + nameScreenshot + ".png";            
+            string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathParentScreenshot + nameScreenshot + ".png";
             string localPath = new Uri(uptobinPath).LocalPath;
             screenshot.SaveAsFile(localPath, ScreenshotImageFormat.Png);
             return localPath;
