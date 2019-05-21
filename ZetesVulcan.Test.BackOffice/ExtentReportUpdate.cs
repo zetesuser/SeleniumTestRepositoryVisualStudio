@@ -222,6 +222,12 @@ namespace ZetesVulcan.Test.BackOffice
             string DestinationPath = Uri.UnescapeDataString(uri.Path);
             string uptobinDestinationPath = DestinationPath.Substring(0, DestinationPath.LastIndexOf("ZetesVulcan.Test.BackOffice.dll")) ;
 
+
+            if (!Directory.Exists(uptobinSourcePath.Substring(0, uptobinSourcePath.LastIndexOf("bin")) + "Screenshots"))
+            {
+                Directory.CreateDirectory((uptobinSourcePath.Substring(0, uptobinSourcePath.LastIndexOf("bin")) + "Screenshots").ToString());
+            }
+
             //Now Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(uptobinSourcePath, "*",
                 SearchOption.AllDirectories))
