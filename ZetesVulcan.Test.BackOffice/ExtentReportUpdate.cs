@@ -27,6 +27,7 @@ namespace ZetesVulcan.Test.BackOffice
         public void Setup()
         {
             extent.AttachReporter(htmlReporter);
+            
         }
 
         [TestMethod]

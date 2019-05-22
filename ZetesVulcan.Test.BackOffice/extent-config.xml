@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extentreports>
     <configuration>
+        <theme>dark</theme>
         <!-- report theme -->
         <!-- standard, dark -->
         <theme>standard</theme>
