@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extentreports>
     <configuration>
-        <theme>dark</theme>
         <!-- report theme -->
         <!-- standard, dark -->
         <theme>standard</theme>
@@ -20,7 +19,11 @@
 		<chartVisibilityOnOpen>true</chartVisibilityOnOpen>
         
         <!-- report name - displayed at top-nav -->
-        <reportName>Automation Report</reportName>
+        <reportName>Automation Report
+              <![CDATA[
+                  <img src='../ZetesVulcan.Test.BackOffice/resources/logowhite.png' />                  
+              ]]>
+        </reportName>
         
         <!-- location of charts in the test view -->
         <!-- top, bottom -->
@@ -30,8 +33,7 @@
         <scripts>
             <![CDATA[
                 $(document).ready(function() {
-                $(‘#parentWithoutNodes’).prop("checked", true).click();
-                $(‘#test-count-setting > div.modal-footer > a’)[0].click();
+
                 });
             ]]>
         </scripts>
@@ -39,7 +41,7 @@
         <!-- custom styles -->
         <styles>
             <![CDATA[
-                
+                .report-name { padding-left: 300px; } .report-name > img { float: left;height: 5%;margin-left: 5px;margin-top: 2px;width: auto; }
             ]]>
         </styles>
     </configuration>

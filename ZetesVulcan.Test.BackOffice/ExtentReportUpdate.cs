@@ -20,14 +20,17 @@ namespace ZetesVulcan.Test.BackOffice
     [TestClass]
     public class ExtentReportUpdate
     {
+        
         static ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(ExtentsReport.ExtentSelenium("ExtentGenerate\\", "Report\\") + "extentReportupdate.html");
         static ExtentReports extent = new ExtentReports();
 
         [TestInitialize]
         public void Setup()
-        {
+        {            
+            string pathextentconfig = System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Substring(0, System.Reflection.Assembly.GetExecutingAssembly().CodeBase.LastIndexOf("bin")) + "extent-config.xml";
+            string localPathextentconfig = new Uri(pathextentconfig).LocalPath;
+            htmlReporter.LoadConfig(localPathextentconfig);
             extent.AttachReporter(htmlReporter);
-            
         }
 
         [TestMethod]
