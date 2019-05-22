@@ -28,10 +28,10 @@ namespace Selenium.Utils
                 Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot).ToString());
             }
 
-            if (!Directory.Exists(path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot))
-            {
-                Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot).ToString());
-            }
+            //if (!Directory.Exists(path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot))
+            //{
+            //    Directory.CreateDirectory((path.Substring(0, path.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot).ToString());
+            //}
 
             //string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathParentScreenshot + pathScreenshot + nameScreenshot + ".png";            
             string uptobinPath = codeBase.Substring(0, codeBase.LastIndexOf("bin")) + pathParentScreenshot + nameScreenshot + ".png";
