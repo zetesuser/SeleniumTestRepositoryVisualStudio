@@ -59,7 +59,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 1:
                     {
                         childTest = parentTest.CreateNode("Login Without User");
-                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3);
+                        //childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3);
+                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3.Substring(resultsChromeLoginWithouUser.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Success Login Without User");
                         childTest.Pass("Successs");
                         break;
@@ -67,14 +68,13 @@ namespace ZetesVulcan.Test.BackOffice
                 case 0:
                     {
                         childTest = parentTest.CreateNode("Login Without User");
-                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3);
+                        //childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3);
+                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3.Substring(resultsChromeLoginWithouUser.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Fail Login Without User");
                         childTest.Fail(resultsChromeLoginWithouUser.Item2);
                         break;
                     }
             }
-
-            parentTest.Info("aaaa").AddScreenCaptureFromPath(resultsChromeLoginWithouUser.Item3);
 
             var resultsChromeLoginWithoutPassword = testchrome.LoginWithoutPassword(values);
             switch (resultsChromeLoginWithoutPassword.Item1)
@@ -82,7 +82,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 1:
                     {
                         childTest = parentTest.CreateNode("Login Without Password");
-                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsChromeLoginWithoutPassword.Item3);
+                        //childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsChromeLoginWithoutPassword.Item3);
+                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsChromeLoginWithoutPassword.Item3.Substring(resultsChromeLoginWithoutPassword.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Success Login Without Password");
                         childTest.Pass("Successs");
                         break;
@@ -90,7 +91,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 0:
                     {
                         childTest = parentTest.CreateNode("Login Without Password");
-                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsChromeLoginWithoutPassword.Item3);
+                        //childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsChromeLoginWithoutPassword.Item3);
+                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsChromeLoginWithoutPassword.Item3.Substring(resultsChromeLoginWithoutPassword.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Fail Login Without Password");
                         childTest.Fail(resultsChromeLoginWithouUser.Item2);
                         break;
@@ -119,7 +121,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 1:
                     {
                         childTest = parentTest.CreateNode("Login Without User");
-                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsFireFoxLoginWithouUser.Item3);
+                        //childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsFireFoxLoginWithouUser.Item3);
+                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsFireFoxLoginWithouUser.Item3.Substring(resultsFireFoxLoginWithouUser.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Success Login Without User");
                         childTest.Pass("Successs");
                         break;
@@ -127,7 +130,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 0:
                     {
                         childTest = parentTest.CreateNode("Login Without User");
-                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsFireFoxLoginWithouUser.Item3);
+                        //childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsFireFoxLoginWithouUser.Item3);
+                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsFireFoxLoginWithouUser.Item3.Substring(resultsFireFoxLoginWithouUser.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Fail Login Without User");
                         childTest.Fail(resultsFireFoxLoginWithouUser.Item2);
                         break;
@@ -140,7 +144,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 1:
                     {
                         childTest = parentTest.CreateNode("Login Without Password");
-                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsFireFoxLoginWithoutPassword.Item3);
+                        //childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsFireFoxLoginWithoutPassword.Item3);
+                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsFireFoxLoginWithoutPassword.Item3.Substring(resultsFireFoxLoginWithoutPassword.Item3.LastIndexOf("Report")));                       
                         childTest.Log(Status.Info, "Success Login Without Password");
                         childTest.Pass("Successs");
                         break;
@@ -148,7 +153,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 0:
                     {
                         childTest = parentTest.CreateNode("Login Without Password");
-                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsFireFoxLoginWithoutPassword.Item3);
+                        //childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsFireFoxLoginWithoutPassword.Item3);
+                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsFireFoxLoginWithoutPassword.Item3.Substring(resultsFireFoxLoginWithoutPassword.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Fail Login Without Password");
                         childTest.Fail(resultsFireFoxLoginWithoutPassword.Item2);
                         break;
@@ -175,7 +181,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 1:
                     {
                         childTest = parentTest.CreateNode("Login Without User");
-                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithouUser.Item3);
+                        //childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithouUser.Item3);
+                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithouUser.Item3.Substring(resultsInternetExplorerLoginWithouUser.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Success Login Without User");
                         childTest.Pass("Successs");
                         break;
@@ -183,7 +190,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 0:
                     {
                         childTest = parentTest.CreateNode("Login Without User");
-                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithouUser.Item3);
+                        //childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithouUser.Item3);
+                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithouUser.Item3.Substring(resultsInternetExplorerLoginWithouUser.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Fail Login Without User");
                         childTest.Fail(resultsInternetExplorerLoginWithouUser.Item2);
                         break;
@@ -196,7 +204,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 1:
                     {
                         childTest = parentTest.CreateNode("Login Without Password");
-                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithoutPassword.Item3);
+                        //childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithoutPassword.Item3);
+                        childTest.Pass("Screenshot successs").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithoutPassword.Item3.Substring(resultsInternetExplorerLoginWithoutPassword.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Success Login Without Password");
                         childTest.Pass("Successs");
                         break;
@@ -204,7 +213,8 @@ namespace ZetesVulcan.Test.BackOffice
                 case 0:
                     {
                         childTest = parentTest.CreateNode("Login Without Password");
-                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithoutPassword.Item3);
+                        //childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithoutPassword.Item3);
+                        childTest.Fail("Screenshot fail").AddScreenCaptureFromPath(resultsInternetExplorerLoginWithoutPassword.Item3.Substring(resultsInternetExplorerLoginWithoutPassword.Item3.LastIndexOf("Report")));
                         childTest.Log(Status.Info, "Fail Login Without Password");
                         childTest.Fail(resultsInternetExplorerLoginWithoutPassword.Item2);
                         break;
